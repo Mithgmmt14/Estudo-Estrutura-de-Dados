@@ -1,4 +1,4 @@
-/* Exercícios Lista Complementar Prof. André Backs -> Busca e Ordenação */
+/* Exercícios Lista Complementar Prof. André Backs -> Busca e Ordenação. Disponível em: https://programacaodescomplicada.wordpress.com/complementar */
 
 /* Exercício 04 */
 
