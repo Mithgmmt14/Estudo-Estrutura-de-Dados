@@ -93,7 +93,6 @@ int inserir_nome_ordenaddo ( char ** Nomes, int N , char * str ){ // Inserção 
 
 /* Exercício 18 */
 
-
 void BubbleSortString ( char * str , int N ){
     if ( str == NULL || N <= 0 ) return;     // Vetor inválido ou n <= 0 , impossível realizar a ordenação;
     int continuar;
@@ -113,6 +112,7 @@ void BubbleSortString ( char * str , int N ){
 }
 
 /* Exercício 19 */
+
 #include <string.h>
 
 void OrdenararPorTamanho ( char ** Nomes , int N ){              // Implementação de Selection Sort para Listas de Listas;
