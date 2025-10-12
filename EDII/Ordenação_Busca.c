@@ -71,6 +71,17 @@ int buscaemvetorordenado ( int * vet, int N , int valor ){
     return -1;                              // Valor não encontrado;
 }
 
+/* Exercício 11 */
+
+/*
+
+-> BubbleSort "Ordenação por pares adjacentes" : Complexadade 0( n^2 ) , algoritmo estável, preserva a ordem relativa;
+-> InsertionSort "Insere o elemento na posição correta" : Complexidade 0 ( n^2 ), algoritmo estável, preserva a ordem relativa de elementos;
+-> SelectionSort "Procura o menor valor e o coloca na posição inicial" : Complexidade 0 ( n ^ 2 ), algoritmo não estável, não preserva a ordem relativa de elementos;
+-> ShellSort "Melhoria do insertion sort ( comparações mais próxima sobre diretiva de um valor h)" : Complexidade 0 ( n ^ 1,25 até 1,6 . n ^ 1.25 ), não estável, não preserva a ordem relativa de elementos;
+
+*/
+
 /* Exercício 17 */
 
 #include <string.h>
