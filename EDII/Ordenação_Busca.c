@@ -150,3 +150,58 @@ void OrdenararPorTamanho ( char ** Nomes , int N ){              // Implementaç
         }
     }
 }
+
+/* Exercício 21 */
+
+    typedef struct {
+        int matricula;
+        char nome[30];
+        float nota;
+    } Pessoa ;
+    
+    void OrdenacaoPorMatricula ( Pessoa * vet , int N ){          // Aplicação de Bubble Sort, a fim de ordenar os elementos por meio de suas matrículas;
+        if ( vet == NULL || N <= 0 ) return;
+        int continua; 
+        Pessoa aux;
+        do{
+            continua = 0;
+            for ( int i = 0 ; i < N - 1 ; i ++ ){
+                if ( vet [i].matricula > vet [i + 1].matricula){ // Comparação por meio dos campos, caso verdadeiro troca-se as posições das Pessoas dentro do Vetor;
+                    aux = vet [i];                                
+                    vet [i] =  vet [i + 1];
+                    vet [i + 1] = aux ;
+                    continua = 1;                                // Variável flag, atuando como sinalizados para continuar ou não o algoritmo;
+                }
+            }
+            N --;
+        }while ( continua != 0 );
+    }
+    
+    void OrdenacaoPorNota ( Pessoa * vet , int N ){               // Aplicação de um Selection Sort, a fim de ordenar as elementos por meio de suas notas;
+        if ( vet == NULL || N <= 0 ) return;
+        for ( int i  = 0 ; i < N - 1 ; i++ ){
+            int menor = i;
+            for ( int j = i + 1 ; j < N ; j++ ){                 // Busca do elemento que possui menor nota dentro do vetor;
+                if ( vet [j].nota < vet [menor].nota) menor = j;
+            }
+            if ( i != menor ){                                   // Troca-se as posições entre os indivíduos caso encontrar aquele de menor nota;
+                Pessoa temp = vet [i];
+                vet [i] = vet [menor];
+                vet [menor] = temp;
+            }
+        }
+    }
+    
+    void OrdenacaoPorNome ( Pessoa * vet, int N ){                 // Aplicação do Insertion Sort, a fim de ordenar os elementos por meio de seus nomes;
+        if ( vet == NULL || N <= 0 ) return;
+        for ( int i = 1 ; i < N ; i++ ){
+            Pessoa temp = vet [i];                                 // Guarda o elemento atual;
+            int j = i - 1;
+            
+            while ( j >= 0 && strcmp(temp.nome, vet[j].nome) < 0){ // Movem-se os elementos alfabeticamente maiores do que o elemento atual;
+                vet[j + 1] = vet[j];
+                j--;
+            }
+            vet [j + 1 ] = temp;                                   // Insere o elemento guardado na posição correta;
+        }
+    }
