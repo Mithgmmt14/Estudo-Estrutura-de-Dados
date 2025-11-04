@@ -42,22 +42,27 @@ void boubleSortDecrescente ( int * vet , int N ){
 
 /* Exercício 06 */
 
-int inserir_vetorordenado ( int * vet , int N , int valor ){
-    if ( vet == NULL || N < 0 ) return 0;      // Vetor Nulo, ou N < 0;
-    int indice = N;                            // Posição Padrão do indice;
-    for ( int i = 0 ; i < N ; i++ ){           // Percorre o vetor até encontrar um elemento maior do que o valor, quebra o laço e atualiza o indice;
-        if ( vet [i] > valor ){
+int* inserir_vetorordenado ( int * vet , int N , int valor ){
+    
+    if ( vet == NULL || N < 0 ) return NULL;              // Vetor Nulo, ou N < 0;
+    
+    int * novo = realloc(vet, (N + 1) * sizeof(int)); // Alocação de um espaço de memória a mais, para comportar o elemento adicionado;
+    if ( novo == NULL ) return vet; 
+    
+    
+    int indice = N;                                   // Posição Padrão do indice;
+    for ( int i = 0 ; i < N ; i++ ){                  // Percorre o vetor até encontrar um elemento maior do que o valor, quebra o laço e atualiza o indice;
+        if ( novo [i] > valor ){
             indice = i;
             break;
         }
     }
     for ( int j = N ; j > indice ; j-- ){ 
-        vet [ j + 1 ] = vet [j];              // Desloca os elementos;
+        novo [ j ] = novo [ j - 1 ];                     // Desloca os elementos;
     }
     
-    vet [indice] = valor;                     // Insere na posição vaga;
-    
-    return 1;
+    novo [indice] = valor;                            // Insere na posição vaga;
+    return novo;
 }
 
 /* Exercício 07 */
@@ -86,20 +91,24 @@ int buscaemvetorordenado ( int * vet, int N , int valor ){
 
 #include <string.h>
 
-int inserir_nome_ordenaddo ( char ** Nomes, int N , char * str ){ // Inserção ordenada similar à ideia de InsertionSort;
-    if ( str == NULL || N < 0 ) return 0; 
+char ** inserir_nome_ordenaddo ( char ** Nomes, int N , char * str ){ // Inserção ordenada similar à ideia de InsertionSort;
+    if ( str == NULL || N < 0 ) return 0;
+
+    char **novo = realloc(Nomes, (N + 1) * sizeof(char *)); // Aloca - se espaço para inserir mais um elemento;
+    if (novo == NULL) return Nomes;
+    
     int indice = N;
     for ( int i = 0; i < N ; i++ ){             // Encontra aquele elemento que é alfabeticamente maior do que a string;
-        if ( strcmp ( Nomes [i] , str ) > 0 ){
+        if ( strcmp ( novo [i] , str ) > 0 ){
             indice = i;
             break;
         }
     }
     for ( int j = N ; j > indice ; j -- ){      // Desloca os elementos para inserir no espaço vago;
-        Nomes [ j + 1 ] = Nomes [j];
+        novo [ j  ] = novo [ j - 1 ];
     }
     Nomes [indice] = str;                       // Adiciona o elemento no indice encontrado;
-    return 1;
+    return novo;
 }
 
 /* Exercício 18 */
